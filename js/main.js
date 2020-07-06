@@ -19,10 +19,6 @@ var playerFirstname = "";
 // Functions
 function playerFirstname(Firstname) {
     if (Firstname)
-    {
-        return playerFirstname;
-    }
-}
 
 function askPlayerChoice() {
     do {
