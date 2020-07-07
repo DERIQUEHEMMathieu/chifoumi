@@ -16,95 +16,97 @@ function playerFirstname(Firstname)
             return playerFirstname;
         }
 }
+
+// Firstname verification (doesn't work, cannot break out of the infinite loop)
+
+// while (playerFirstname.length < 2 || playerFirstname.length > 20)
+// {
+//     prompt("Veuillez entrer une saisie valable."+ " " + "Quel est votre prénom ?");
+// }
+
 alert("Préparez-vous" + " " + playerFirstname + ", le jeu va débuter !");
 
 // Choose between paper, stone and scissors
 
 alert("Petit rappel : la pierre bat les ciseaux ; la feuille bat la pierre et les ciseaux battent la feuille.");
 
-var choixUtilisateur = prompt(playerFirstname + "," + " " + "choisissez-vous pierre, feuille, ou ciseaux ?");
-
-function choix(choixUtilisateur)
-{
-    if (choixUtilisateur)
-    {
-        return choix;
-    }
-}
 
 // User input verification
 
-var choixUser = (choix.length);
+var choixUser = "";
 var choixCiseaux = "ciseaux";
 var choixPapier = "papier";
 var choixPierre = "pierre";
-
-if (choixUser = choixPapier.toLowerCase() || choixCiseaux.toLowerCase() || choixPierre.toLowerCase())
-    {
-        alert("Votre choix est enregistré.");
-    }
-
-while ((choixUser < 2 || choixUser > 20 ) || (choixUser != choixPapier || choixUser != choixPierre || choixUser != choixCiseaux))
-    {
-        alert("Veuillez réécrire votre choix")
-    }
-   
-//     {   
-//     
-//     }
-
-// alert("Votre choix est enregistré.");
-
-// var nonValide = function () {
-// while (choixUtilisateur !== 'pierre' && choixUtilisateur !== 'feuille' && choixUtilisateur !== 'ciseaux') {
-// confirm(choixUtilisateur + " l'entrer n'est pas valide !");
-// choix();
+    
+// while (choixUser != choixPapier && choixUser != choixPierre && choixUser != choixCiseaux)
+// {
+    choixUser = prompt(playerFirstname + "," + " " + "choisissez-vous pierre, feuille, ou ciseaux ?").toLocaleLowerCase();
 // }
-// };
-// nonValide();
 
-
-// var choixOrdi = Math.random();
-
-// if (choixOrdi <= 0.34) {
-// 	choixOrdi = 'pierre';
-// } else if (choixOrdi <= 0.67) {
-// 	choixOrdi = 'feuille';
-// } else {
-// 	choixOrdi = 'ciseaux';
+// if (choixUser === choixCiseaux || choixPapier || choixPierre)
+// {
 // }
-// var ordiGagne = choixOrdi;
 
-// ordiGagne = "Victiore pour l'ordinnateur";
-// var userGagnent = choixUtilisateur;
+// Computer choose
 
-// userGagnent = "Victiore pour l'utilisateur";
-// alert('L\'ordinnateur a choisi ' + choixOrdi);
+var choixOrdi = Math.random();
 
-// var comparer = function (choix1, choix2) {
-// 	if (choix1 === choix2) {
-// 		return "Egalité " + choixUtilisateur;
-// 	} else if (choix1 === 'pierre') {
-// 		if (choix2 === 'ciseaux') {
-// 			return 'La pierre gagne ! ' + userGagnent;
-// 		} else {
-// 			return 'La feuille gagne ! ' + ordiGagne + ' l\'utilisateur avait choisi la ' + choixUtilisateur;
-// 		}
-// 	} else if (choix1 === 'feuille') {
-// 		if (choix2 === 'pierre') {
-// 			return 'La feuille gagne ! ' + userGagnent;
-// 		} else {
-// 			return 'Le ciseaux gagnent ! ' + ordiGagne + ' l\'utilisateur avait choisi la ' + choixUtilisateur;
-// 		}
-// 	} else if (choix1 === 'ciseaux') {
-// 		if (choix2 === 'feuille') {
-// 			return 'Le ciseaux gagne ! ' + userGagnent;
-// 		} else {
-// 			return 'La pierre gagne ! ' + ordiGagne + ' l\'utilisateur avait choisi le ' + choixUtilisateur;
-// 		}
-// 	}
-// };
+if (choixOrdi <= 0.34)
+{
+var choixOrdi = "pierre";
+} 
+else if (choixOrdi <= 0.67) 
+{
+var choixOrdi = "feuille";
+} 
+else 
+{
+var choixOrdi = "ciseaux";
+}
 
-// alert(comparer(choixUtilisateur, choixOrdi));
+// Start game 
 
+alert("L'ordinateur a choisi :" + " " + choixOrdi);
 
+var compare = function (choix1, choix2) 
+{
+if (choix1 === choix2) 
+    {
+		return "Egalité ! Vous et l'ordinateur avaient choisis :" + " " + choixUser;
+    } 
+else if (choix1 === "pierre") 
+    {
+        if (choix2 === "ciseaux") 
+        {
+            return "La pierre gagne !" + " " + String.fromCodePoint(0x1F609);
+        } 
+        else 
+        {
+			return "La feuille gagne !" + " " + String.fromCodePoint(0x1F621) + " " + "Vous aviez choisi :" + " " + choixUser;
+		}
+    } 
+else if (choix1 === "feuille") 
+    {
+        if (choix2 === "pierre") 
+        {
+		    return "La feuille gagne !" + " " + String.fromCodePoint(0x1F609);
+        } 
+        else 
+        {
+			return "Le ciseaux gagne !" + " " + String.fromCodePoint(0x1F621) + " " + "Vous aviez choisi :" + " " + choixUser;
+		}
+    } 
+else if (choix1 === "ciseaux") 
+    {
+        if (choix2 === "feuille") 
+        {
+			return "Le ciseaux gagne !" + " " + String.fromCodePoint(0x1F609);
+        } 
+        else 
+        {
+			return "La pierre gagne !" + " " + String.fromCodePoint(0x1F621) + " " + "Vous aviez :" + " " + choixUser;
+		}
+	}
+};
+
+alert(compare(choixUser, choixOrdi));
